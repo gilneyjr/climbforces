@@ -35,7 +35,7 @@ def getHandles(path):
     with open(path, 'r') as f:
         line = f.readline()
         while line:
-            users.append(line.split(',')[0])
+            users.append(line.split(';')[0])
             line = f.readline()
     return users
 
@@ -45,18 +45,19 @@ if __name__ == '__main__':
         if path[-1] != '/':
             path = path+'/'
     else:
-        path = './data/all/'
+        path = './data/'
 
     if not os.path.exists(path):
         os.makedirs(path)
 
     if not os.path.exists(path+'submissions/'):
         os.makedirs(path+'submissions/')
+
     
     count = 1
     handles = getHandles(path+'users.csv')
     for handle in handles:
-        print('Collecting ' + handle + '\'s submissions (' + str(count) + '/' + str(len(handles)) + ')')
+        print('Collecting ' + handle + '\'s submissions (' + str(count) + '/' + str(len(handles)) + ') ' + str(round((100*count)/len(handles),4)) + '%')
         if not os.path.exists(path+'submissions/'+handle+'.csv'):
             saveSubmissions(handle, path+'submissions/'+handle+'.csv')
         count = count+1

@@ -60,7 +60,7 @@ if __name__ == '__main__':
         if path[-1] != '/':
             path = path+'/'
     else:
-        path = './data/all/'
+        path = './data/'
 
     if not os.path.exists(path):
         os.makedirs(path)

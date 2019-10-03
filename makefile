@@ -1,15 +1,15 @@
-ALL_DATA_PATH = ./data/all
+DATA_PATH = ./data
 SCRIPTS_PATH = ./scripts
 
 USERS_SCRIPT = users.py
 SUBMISSIONS_SCRIPT = submissions.py
 
-users: $(ALL_DATA_PATH)/users.csv
+users: $(DATA_PATH)/users.csv
 
-$(ALL_DATA_PATH)/users.csv:
+$(DATA_PATH)/users.csv:
 	$(SCRIPTS_PATH)/$(USERS_SCRIPT)
 
-submissions: $(ALL_DATA_PATH)/users.csv
+submissions: $(DATA_PATH)/users.csv
 	$(SCRIPTS_PATH)/$(SUBMISSIONS_SCRIPT)
 
 cleandata:
